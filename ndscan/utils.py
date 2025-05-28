@@ -3,18 +3,18 @@
 from collections.abc import Callable, Iterable
 from enum import Enum, unique
 from itertools import pairwise
-import oitg.fitting
+import oitg.oitg.fitting
 from typing import Any, Protocol, TypeVar
 
 #: Registry of well-known fit procedure names.
 FIT_OBJECTS = {
-    n: getattr(oitg.fitting, n)
+    n: getattr(oitg.oitg.fitting, n)
     for n in [
         "cos", "decaying_sinusoid", "detuned_square_pulse", "exponential_decay",
         "gaussian", "line", "lorentzian", "rabi_flop", "sinusoid", "v_function"
     ]
 }
-FIT_OBJECTS["parabola"] = oitg.fitting.shifted_parabola
+FIT_OBJECTS["parabola"] = oitg.oitg.fitting.shifted_parabola
 
 #: Name of the ``artiq.language.HasEnvironment`` argument that is used to confer the
 #: list of available parameters to the dashboard plugin, and to pass the information
